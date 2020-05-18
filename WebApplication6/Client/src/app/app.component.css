@@ -1,0 +1,98 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+table {
+  width: 100%;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  text-align: center;
+}
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 3px solid #3f51b5;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin: 30px;
+  padding-left: 33px;
+  color: #3f51b5;
+  font-weight: bolder;
+  font-size: medium;
+  border-radius: 12%;
+}
+#upload-image {
+  position: fixed;
+  margin-left: -28px;
+  margin-bottom: 4px;
+  font-size: 22px;
+}
+
+#search {
+  margin: 34px;
+  float: right;
+  border-width: medium;
+  border-color: blueviolet;
+  margin-right: 85px;
+  height: 28px;
+}
+
+#search-bttn {
+  float: right;
+  margin: 33px;
+  margin-left: -69px;
+  height: 27px;
+  line-height:unset;
+}
+#start-date {
+  float: right;
+}
+
+#end-date {
+  float: right;
+}
+#filter {
+  width: 30%;
+}
+
+.mat-form-field-flex {
+  background-color: white;
+}
+
+:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected), .cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected), .cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-semi-selected) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-semi-selected, .cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-semi-selected, .cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-semi-selected {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.mat-calendar-body-begin-range:not(.mat-calendar-body-end-range) {
+  border-radius: 100% 0 0 100%;
+  background-color: #c5cae9;
+}
+
+.mat-calendar-body-end-range:not(.mat-calendar-body-begin-range) {
+  border-radius: 0 100% 100% 0;
+  background-color: #c5cae9;
+}
+
+.mat-calendar-body > tr .mat-calendar-cell-semi-selected ~ .mat-calendar-cell-semi-selected {
+  border-radius: 0;
+}
+
+.mat-calendar-cell-semi-selected {
+  background-color: #c5cae9;
+}
+
+.mat-calendar-cell-over > .mat-calendar-body-cell-content {
+  border: #3f51b5 1px solid;
+}

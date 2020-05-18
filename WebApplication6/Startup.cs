@@ -47,7 +47,7 @@ namespace WebApplication6
 
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "./ClientApp/dist";
+                configuration.RootPath = "./Client/dist";
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -81,7 +81,7 @@ namespace WebApplication6
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "Client";
 
                 if (env.IsDevelopment())
                 {
