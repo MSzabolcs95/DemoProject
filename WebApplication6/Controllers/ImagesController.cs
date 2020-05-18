@@ -21,18 +21,13 @@ namespace WebApplication6.Controllers
         {
             _imageRepository = imageRepository;
         }
-        // GET: api/<controller>
+        
         [HttpGet]
         public async Task<List<ImageInfo>> Get(string name, DateTime startDate, DateTime endDate)
         {
             return await GetImageListQueryHandler.GetImagesList(_imageRepository, name, startDate, endDate);
         }
 
-        // GET api/<controller>/5
-
-
-
-        // POST api/<controller>
         [HttpPost]
         [DisableRequestSizeLimit]
         public async Task Post([FromBody]List<Base64Image> images)
@@ -48,7 +43,7 @@ namespace WebApplication6.Controllers
         {
             return await DownloadImageCommandHandler.DownloadImage(_imageRepository, id);
         }
-        // PUT api/<controller>/5
+
         [HttpPost("delete")]
         public async Task Delete([FromBody]int id)
         {

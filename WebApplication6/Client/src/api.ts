@@ -9,9 +9,7 @@ export class Api  {
 
 
 
-  constructor(private httpClient: HttpClient) {
-    
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getImageInBase64(id) {
     const httpOptions = {

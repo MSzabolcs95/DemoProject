@@ -14,6 +14,9 @@ export class AppComponent implements OnInit {
   filterByName = null;
   endDate = new Date().toISOString().slice(0, 10);
   images;
+
+  constructor(private api: Api) { }
+
  async onFilesSelected(evt: Event) {
    let reader = new FileReader();
    let fileList = [];
@@ -120,13 +123,14 @@ export class AppComponent implements OnInit {
       a.click();
     })
   };
-  constructor(private api: Api) { }
+
   ngOnInit() {
     this.api.getImages(this.filterByName, this.startDate, this.endDate).subscribe((data) => {
       console.log(data);
       this.images = data;
     });
   }
+
   date = new FormControl(new Date())
   displayedColumns: string[] = ['position', 'name', 'weight','actions'];
   dataSource = this.images;
