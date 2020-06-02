@@ -12,8 +12,8 @@ namespace EFDataAccesLibrary.Application.Images.Commands
     {
         public static async Task<string> DownloadImage(IImageRepository _imageRepository, int id)
         {
-            var image = new ImageStorage();
-            image = await _imageRepository.GetImageStorageById(id);
+            
+            var image = await _imageRepository.GetImageStorageById(id);
             
             var convertedPicture = Convert.ToBase64String(image.Picture);
 

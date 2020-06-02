@@ -5,26 +5,25 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
   startDate = null;
   filterByName = null;
   endDate = new Date().toISOString().slice(0, 10);
   images;
 
-  constructor(private api: Api) { }
 
- async onFilesSelected(evt: Event) {
-   let reader = new FileReader();
-   let fileList = [];
+  async onFilesSelected(evt: Event) {
+    let reader = new FileReader();
+    let fileList = [];
     const files: FileList = (evt.target as HTMLInputElement).files;
-   for (let i = 0; i < files.length; i++) {
-     let reader = new FileReader();
+    for (let i = 0; i < files.length; i++) {
+      let reader = new FileReader();
       const file = files[i];
-       reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
       reader.onload = async () => {
         fileList.push({ Name: file.name, Date: new Date(), Base64Picture: reader.result });
         if (fileList.length === files.length) {
@@ -32,11 +31,12 @@ export class AppComponent implements OnInit {
             console.log(data);
             this.images = data;
           }));
-          
+
         }
       };
     }
   }
+
 
   applyFilter(event) {
     if (event.target.value.length > 0) {
@@ -45,14 +45,14 @@ export class AppComponent implements OnInit {
     else {
       this.filterByName = null;
     }
-      this.api.getImages(this.filterByName, this.startDate, this.endDate).subscribe((data) => {
-        console.log(data);
-        this.images = data;
-      });
-    };
- 
+    this.api.getImages(this.filterByName, this.startDate, this.endDate).subscribe((data) => {
+      console.log(data);
+      this.images = data;
+    });
+  };
 
-  b64toBlob (b64Data, contentType = '', sliceSize = 512) {
+
+  b64toBlob(b64Data, contentType = '', sliceSize = 512) {
     const byteCharacters = atob(b64Data);
     const byteArrays = [];
 
@@ -73,11 +73,11 @@ export class AppComponent implements OnInit {
   }
 
   async OnDeleteSelected(id) {
-    await this.api.deleteImage(id).subscribe(()=>
+    await this.api.deleteImage(id).subscribe(() =>
       this.api.getImages(this.filterByName, this.startDate, this.endDate).subscribe((data) => {
-      console.log(data);
-      this.images = data;
-    }));
+        console.log(data);
+        this.images = data;
+      }));
   }
 
   addEvent(event) {
@@ -107,7 +107,7 @@ export class AppComponent implements OnInit {
       console.log(data);
       this.images = data;
     });
-   //console.log(this.endDate);
+    //console.log(this.endDate);
     //console.log(this.startDate);
   }
 
@@ -124,6 +124,8 @@ export class AppComponent implements OnInit {
     })
   };
 
+
+  constructor(private api: Api) { }
   ngOnInit() {
     this.api.getImages(this.filterByName, this.startDate, this.endDate).subscribe((data) => {
       console.log(data);
@@ -131,8 +133,9 @@ export class AppComponent implements OnInit {
     });
   }
 
+
   date = new FormControl(new Date())
-  displayedColumns: string[] = ['position', 'name', 'weight','actions'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'actions'];
   dataSource = this.images;
   title = 'ClientApp';
 }

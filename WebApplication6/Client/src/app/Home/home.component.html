@@ -3,17 +3,20 @@
     <span>Demo Project</span>
   </mat-toolbar-row>
 </mat-toolbar>
-
 <div>
   <label for="file-upload" class="custom-file-upload">
     <mat-icon id="upload-image">cloud_upload</mat-icon><span> Upload Files</span>
   </label>
   <input id="file-upload" type="file" multiple (change)="onFilesSelected($event)">
- 
+  <!--<mat-form-field (ngSubmit)='rename($event)' color='primary' id='search-input' class='full-width' appearance='outline'>
+    <mat-label color='red'>Search</mat-label>
+    <input #searchBar matInput [(ngModel)]='searchValue' name='searchBar' [value]='searchValue' (keyup.enter)='performSearch($event)'>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)='rename(searchValue)' id='submit-search' type='submit' for='searchBar'>Submit</button>-->
   <button id="search-bttn" type="submit" for='newName' (click)='rename(newName)' mat-raised-button color="primary">Rename all</button>
   <input  [(ngModel)]='newName' name='newName' [value]='newName' id="search" ng-model="image.name"  type="search" placeholder="  New name..." />
 </div>
-
 <div>
   <mat-form-field id="filter">
     <mat-label>Filter</mat-label>
@@ -34,20 +37,23 @@
     <mat-datepicker  #startDate (selectedChanged)="selectStartDate($event)" ></mat-datepicker>
   </mat-form-field>
 </div>
-
 <table mat-table [dataSource]="images" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+  <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef> Id </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
 
- 
+  <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
- 
+  <!-- Weight Column -->
   <ng-container matColumnDef="weight">
     <th mat-header-cell *matHeaderCellDef> Upload Date </th>
     <td mat-cell *matCellDef="let element"> {{element.date.substring(0, 10)}} </td>

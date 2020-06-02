@@ -8,9 +8,17 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material-module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { HomeComponent } from './Home/home.component';
+import { HomeModule } from './Home/home.module';
 
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  }]
 // Default MatFormField appearance to 'fill' as that is the new recommended approach and the
 // `legacy` and `standard` appearances are scheduled for deprecation in version 10.
 // This makes the examples that use MatFormField render the same in StackBlitz as on the docs site.
@@ -23,10 +31,12 @@ import { AppComponent } from './app.component';
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    HomeModule,
+    RouterModule
   ],
-  entryComponents: [AppComponent],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
+  entryComponents: [HomeComponent],
+  declarations: [HomeComponent],
+  bootstrap: [HomeComponent],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ]

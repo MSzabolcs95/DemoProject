@@ -12,8 +12,8 @@ namespace EFDataAccesLibrary.Application.Images.Commands
     {
         public static async Task DeleteImage(IImageRepository _imageRepository, int id)
         {
-            var image = new ImageInfo();
-            image = await _imageRepository.GetImageById(id);
+           
+            var image = await _imageRepository.GetImageById(id);
 
             await _imageRepository.DeleteImage(image);
         }
